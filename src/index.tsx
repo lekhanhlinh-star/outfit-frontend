@@ -4,17 +4,22 @@ import * as ReactDOM from "react-dom/client"
 import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
-
+import ReactGA from 'react-ga4';
+import { CookiesProvider } from 'react-cookie';
+ReactGA.initialize("G-F24HQ15XNV"); // Replace with your GA4 Measurement ID
 
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container)
 
 root.render(
+  <CookiesProvider defaultSetOptions={{ path: '/' }}>
   <React.StrictMode>
     <ColorModeScript />
     <App />
   </React.StrictMode>,
+      </CookiesProvider>
+
 )
 
 // If you want your app to work offline and load faster, you can change
